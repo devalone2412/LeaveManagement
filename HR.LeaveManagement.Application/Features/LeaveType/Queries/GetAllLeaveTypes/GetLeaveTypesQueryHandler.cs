@@ -10,7 +10,7 @@ public class GetLeaveTypesQueryHandler : IRequestHandler<GetLeaveTypesQuery, Lis
     private readonly IMapper _mapper;
     private readonly ILeaveTypeRepository _leaveTypeRepository;
     private readonly IAppLogger<GetLeaveTypesQueryHandler> _logger;
-    
+
     public GetLeaveTypesQueryHandler(IMapper mapper, ILeaveTypeRepository leaveTypeRepository, IAppLogger<GetLeaveTypesQueryHandler> logger)
     {
         _mapper = mapper;
@@ -22,10 +22,10 @@ public class GetLeaveTypesQueryHandler : IRequestHandler<GetLeaveTypesQuery, Lis
     {
         // Query the database
         var leaveTypes = await _leaveTypeRepository.GetAsync();
-        
+
         // Convert data objects to DTO objects
         var data = _mapper.Map<List<LeaveTypeDto>>(leaveTypes);
-        
+
         // return list of DTO object
         _logger.LogInformation("Leave types retrieved successfully.");
         return data;

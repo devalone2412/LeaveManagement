@@ -18,16 +18,16 @@ public class DeleteLeaveTypeCommandHandler : IRequestHandler<DeleteLeaveTypeComm
     {
         // Convert to domain entity object
         var leaveTypeToDelete = await _leaveTypeRepository.GetByIdAsync(request.Id);
-        
+
         // Verify that the record exists
         if (leaveTypeToDelete == null)
         {
             throw new NotFoundException(nameof(Domain.LeaveType), request.Id);
         }
-        
+
         // Add to database
         await _leaveTypeRepository.DeleteAsync(leaveTypeToDelete);
-        
+
         // Return Unit value
         return Unit.Value;
     }

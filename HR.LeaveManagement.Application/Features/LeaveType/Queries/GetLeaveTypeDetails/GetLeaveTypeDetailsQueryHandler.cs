@@ -20,16 +20,16 @@ public class GetLeaveTypeDetailsQueryHandler : IRequestHandler<GetLeaveTypeDetai
     {
         // Query the database
         var leaveType = await _leaveTypeRepository.GetByIdAsync(request.Id);
-        
+
         // Verify that the record exists
         if (leaveType == null)
         {
             throw new NotFoundException(nameof(Domain.LeaveType), request.Id);
         }
-        
+
         // Convert data object to DTO object
         var data = _mapper.Map<LeaveTypeDetailsDto>(leaveType);
-        
+
         // Return DTO object
         return data;
     }

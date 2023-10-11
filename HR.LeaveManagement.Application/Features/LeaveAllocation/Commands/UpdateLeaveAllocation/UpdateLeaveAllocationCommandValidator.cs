@@ -1,10 +1,5 @@
 ﻿using FluentValidation;
 using HR.LeaveManagement.Application.Contracts.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HR.LeaveManagement.Application.Features.LeaveAllocation.Commands.UpdateLeaveAllocation
 {
@@ -32,7 +27,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveAllocation.Commands.Updat
         }
         async Task<bool> LeaveAllocationMustExist(int id, CancellationToken arg2)
         {
-            var leaveAllocation= await _leaveAllocationRepository.GetByIdAsync(id);
+            var leaveAllocation = await _leaveAllocationRepository.GetByIdAsync(id);
             return leaveAllocation != null;
         }
     }

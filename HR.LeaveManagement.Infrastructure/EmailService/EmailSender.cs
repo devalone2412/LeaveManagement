@@ -1,5 +1,4 @@
-﻿using System.Net;
-using HR.LeaveManagement.Application.Contracts.Email;
+﻿using HR.LeaveManagement.Application.Contracts.Email;
 using HR.LeaveManagement.Application.Models.Email;
 using Microsoft.Extensions.Options;
 using SendGrid;
@@ -10,12 +9,12 @@ namespace HR.LeaveManagement.Infrastructure.EmailService;
 public class EmailSender : IEmailSender
 {
     private readonly EmailSettings _emailSettings;
-    
+
     public EmailSender(IOptions<EmailSettings> emailSettings)
     {
         _emailSettings = emailSettings.Value;
     }
-    
+
     public async Task<bool> SendEmail(EmailMessage email)
     {
         var client = new SendGridClient(_emailSettings.ApiKey);
@@ -25,7 +24,7 @@ public class EmailSender : IEmailSender
             Email = _emailSettings.FromAddress,
             Name = _emailSettings.FromName
         };
-        
+
         var message = MailHelper.CreateSingleEmail(from, to, email.Subject, email.Body, email.Body);
         var response = await client.SendEmailAsync(message);
 

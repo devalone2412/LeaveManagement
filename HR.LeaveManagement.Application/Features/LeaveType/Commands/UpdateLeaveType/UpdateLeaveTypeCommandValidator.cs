@@ -6,7 +6,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.UpdateLeave
 public class UpdateLeaveTypeCommandValidator : AbstractValidator<UpdateLeaveTypeCommand>
 {
     private readonly ILeaveTypeRepository _leaveTypeRepository;
-    
+
     public UpdateLeaveTypeCommandValidator(ILeaveTypeRepository leaveTypeRepository)
     {
         _leaveTypeRepository = leaveTypeRepository;
@@ -14,7 +14,7 @@ public class UpdateLeaveTypeCommandValidator : AbstractValidator<UpdateLeaveType
         RuleFor(p => p.Id)
             .NotNull()
             .MustAsync(LeaveTypeMustExist);
-        
+
         RuleFor(p => p.Name)
             .NotEmpty().WithMessage("{PropertyName} is required.")
             .NotNull()

@@ -67,7 +67,7 @@ public class LeaveTypesController : ControllerBase
         {
             Id = id
         };
-        
+
         await _mediator.Send(request);
 
         return NoContent();

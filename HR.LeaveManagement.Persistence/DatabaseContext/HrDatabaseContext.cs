@@ -8,9 +8,9 @@ public class HrDatabaseContext : DbContext
 {
     public HrDatabaseContext(DbContextOptions<HrDatabaseContext> options) : base(options)
     {
-        
+
     }
-    
+
     public DbSet<LeaveType> LeaveTypes { get; set; }
     public DbSet<LeaveAllocation> LeaveAllocations { get; set; }
     public DbSet<LeaveRequest> LeaveRequests { get; set; }
@@ -32,7 +32,7 @@ public class HrDatabaseContext : DbContext
                 entry.Entity.DateCreated = DateTime.Now;
             }
         }
-        
+
         return base.SaveChangesAsync(cancellationToken);
     }
 }

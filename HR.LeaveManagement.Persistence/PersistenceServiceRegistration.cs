@@ -12,7 +12,7 @@ public static class PersistenceServiceRegistration
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
         var a = configuration.GetConnectionString("HrDatabaseConnectionString");
-        
+
         services.AddDbContext<HrDatabaseContext>(options =>
         {
             options.UseSqlServer(configuration.GetConnectionString("HrDatabaseConnectionString"));
@@ -22,7 +22,7 @@ public static class PersistenceServiceRegistration
         services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
         services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();
         services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
-        
+
         return services;
     }
 }

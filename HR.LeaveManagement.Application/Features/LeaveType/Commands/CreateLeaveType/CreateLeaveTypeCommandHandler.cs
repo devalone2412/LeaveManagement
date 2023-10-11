@@ -29,7 +29,7 @@ public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeComm
         {
             throw new BadRequestException($"Invalid {nameof(Domain.LeaveType)}", validationResult);
         }
-        
+
         // Convert to domain entity object
         var leaveTypeToCreate = _mapper.Map<Domain.LeaveType>(request);
 
